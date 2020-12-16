@@ -52,7 +52,7 @@ public enum OPERATION {
     USERNAME{
         //only username is filled up
         @Override
-        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation){
+        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation) throws InterruptedException {
 
             WebElement username = driver.findElement(By.id("sign-username"));
             username.sendKeys(userSignUpOperation.getSign_username());
@@ -60,6 +60,8 @@ public enum OPERATION {
 
             WebElement signUpButton=driver.findElement(By.xpath("/html/body/div[2]/div/div/div[3]/button[2]"));
             signUpButton.click();
+
+            Thread.sleep(3000);
 
             String response=driver.switchTo().alert().getText();
             driver.switchTo().alert().accept();
@@ -74,7 +76,7 @@ public enum OPERATION {
     PASSWORD{
         //only password is filled up
         @Override
-        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation){
+        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation) throws InterruptedException {
 
 
             WebElement password = driver.findElement(By.id("sign-password"));
@@ -82,6 +84,8 @@ public enum OPERATION {
 
             WebElement signUpButton=driver.findElement(By.xpath("/html/body/div[2]/div/div/div[3]/button[2]"));
             signUpButton.click();
+
+            Thread.sleep(3000);
 
             String response=driver.switchTo().alert().getText();
             driver.switchTo().alert().accept();
@@ -96,11 +100,13 @@ public enum OPERATION {
     EMPTY{
         //neither of the username and password are filled up
         @Override
-        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation){
+        public String finalAction(WebDriver driver,UserSignUpOperation userSignUpOperation) throws InterruptedException {
 
 
             WebElement signUpButton=driver.findElement(By.xpath("/html/body/div[2]/div/div/div[3]/button[2]"));
             signUpButton.click();
+
+            Thread.sleep(3000);
 
             String response=driver.switchTo().alert().getText();
             driver.switchTo().alert().accept();
