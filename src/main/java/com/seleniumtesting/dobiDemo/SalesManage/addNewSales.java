@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.time.LocalDate;
+import static com.seleniumtesting.dobiDemo.basicOperration.sleep.sleep;
 
 public class addNewSales {
 
@@ -28,20 +28,11 @@ public class addNewSales {
     }
 
     /**
-     *
-     * @param Millis Time in milliseconds for the ongoing thread to sleep
-     */
-    public static void sleep(int Millis){
-        try {
-            Thread.sleep(Millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    /**
-     * <h1>Login Operation with Username and Password as parameters</h1>
+     * Perform login on the website with passed email and password
+     * <p>
+     * This method would use the email and password passed to , to fill up the corresponding input fields in the website.
+     * Lastly, submit the login form by clicking the login button on the website.
+     * </br>
      * @param email Email, to fill up the login input field with id of "email"
      * @param password Password, to fill up the login input field with id of "password"
      * <p>This method will first visit the @Variable "TARGET_URL_HOME", then clicked the login button on the nav bar. Filling up the login form with input fields
@@ -77,27 +68,30 @@ public class addNewSales {
 
     /**
      *
+     * <p></p>
+     *  </br>
      * @param CUST_NEW_EXISTED accept String then used for Enum in SELECT_CUST.java, do decide creating new customer or select existing customer
      * @param customer Customer object that is constructed with Name,Phone Number, Description and Starting balance ( used when the CUST_NEW_EXISTED enum is creating new customer)
-     * @param date Date of the Sale
-     * @param SALES_ITEM Items of the Sale
+     * @param service_string_array Items of the Sale
      * @param description description for the Service selected
      * @param discount Discount applied to the Sale
      * @param PAYMENT_M Payment Method of the Sale, "cash" or "bank" (actual values of the input field)
      * @param PAYMENT Payment ( Full, partial upon Customer sending their items or payment on pickup of items
+     *
      * @return Status Code so the the Unit Testing of this method can be evaluated
      */
     public String newSales(String CUST_NEW_EXISTED,
                            Customer customer,
-                           LocalDate date,
-                           String SALES_ITEM,
+                           String[] service_string_array,
                            String description,
-                           String quantity,
                            String discount,
                            String PAYMENT_M,
                            String PAYMENT){
+        //declaration without initialization
+        String quantity;
 
         //navigate to the page of creating new Sale
+        //concatenating the String of TARGET URL and sub page URL
         DRIVER.get( TARGET_URL_HOME.concat(newSales) );
 
         //NEW or EXISTED customer, to create the Sale on
@@ -110,44 +104,60 @@ public class addNewSales {
         DRIVER.findElement(By.id("add_item")).click();
         sleep(2000);
 
-        addItemsofSales(SALES_ITEM);
+        for( String service_string : service_string_array ) {
 
-        DRIVER.findElement(By.id("itemSelect_desc")).sendKeys(description);
+            selectServices(service_string);
 
-        DRIVER.findElement(By.id("itemSelect_quantity")).sendKeys(quantity);
+            //for the testing purpose, all description would be the same as it @variable description was used repeatedly
+            // enhanced for loop only supporting use one collection, while in this case , the [] service_string_array
+            DRIVER.findElement(By.id("itemSelect_desc")).sendKeys(description);
 
-        DRIVER.findElement(By.id("addItem")).click();
-        sleep(2000);
+            //same case for the quantity
+            // another option is that the quantity is updated using Math.random in range of 6
+            quantity = String.valueOf(Math.random() * 6);
+            DRIVER.findElement(By.id("itemSelect_quantity")).sendKeys(quantity);
 
-        DRIVER.findElement(By.id("discount")).sendKeys(discount);
+            DRIVER.findElement(By.id("addItem")).click();
+            sleep(2000);
+
+        }
 
         // "cash" or "bank"
         DRIVER.findElement(By.id("paymentTypeVal")).sendKeys(PAYMENT_M);
-        DRIVER.findElement(By.id("amountPaid")).sendKeys(PAYMENT);
 
         String totalAmount=DRIVER.findElement(By.xpath("/html/body/div/div[1]/section/div/div[2]/div[1]/div/div[2]/table/tbody/tr[4]/input")).getText();
         System.out.println("Total amount is : " + totalAmount );
 
+        //ensure that the totalAmount is in correct format and special characters other from numbers are escaped
+        //TODO 1. escape String for conversion to BigDecimal
+
+        //TODO 2. prevent the discount is greater that @variable totalAmount
+        //BigDecimal totalAmount_BDouble= new BigDecimal(totalAmount);
+
+
+        DRIVER.findElement(By.id("discount")).sendKeys(discount);
+        DRIVER.findElement(By.id("amountPaid")).sendKeys(PAYMENT);
+
+        //change pending
         return "S";
     }
 
-    public void addItemsofSales(String s){
+    public void selectServices(String string_service ){
 
-        //click the "add items" button to add items into Sale of a Customer
-        DRIVER.findElement(By.xpath("/html/body/div/div[1]/section/div/div[2]/div[1]/div/div[1]/div/a")).click();
+            //click the "add items" button to add items into Sale of a Customer
+            DRIVER.findElement(By.xpath("/html/body/div/div[1]/section/div/div[2]/div[1]/div/div[1]/div/a")).click();
 
-        WebElement service_selection=DRIVER.findElement(By.xpath("//span[.='" + s + "']"));
+            WebElement service_selection = DRIVER.findElement(By.xpath("//span[.='" + string_service + "']"));
 
-        if( service_selection != null){
+            if (service_selection != null) {
 
-            service_selection.click();
+                service_selection.click();
 
-        }
-        //retry if no selection can be done
-        else{
-            //addItemsofSales(s,description);
-        }
-
+            }
+            //retry if no selection can be done
+            else {
+                //addItemsofSales(s,description);
+            }
 
     }
 
