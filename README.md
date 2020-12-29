@@ -1,5 +1,12 @@
 # seleniumLearning
 
+Build Status
+Master branch: 
+![Java CI with Maven : Master](https://github.com/ebiggerr/seleniumLearning/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+
+Features branch:
+![Java CI with Maven : Features](https://github.com/ebiggerr/seleniumLearning/workflows/Java%20CI%20with%20Maven/badge.svg?branch=features)
+
 ## E2E testing using Selenium
 
 This project is built using Maven build tool.
