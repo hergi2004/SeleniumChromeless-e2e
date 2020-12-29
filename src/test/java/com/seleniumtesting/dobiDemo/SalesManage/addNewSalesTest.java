@@ -1,8 +1,9 @@
 package com.seleniumtesting.dobiDemo.SalesManage;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -11,39 +12,37 @@ import static com.seleniumtesting.dobiDemo.SalesManage.addNewSales.setTARGET_URL
 
 class addNewSalesTest {
 
-    private String email;
-    private String password;
-    private WebDriver driver;
-    private final String TARGET_HOME_INDEX="https://ontime.unisza.edu.my/dobidemo/index.php";
+    private static WebDriver driver;
+    private static final String TARGET_HOME_INDEX="https://ontime.unisza.edu.my/dobidemo/index.php";
 
-    private addNewSales add;
+    private static addNewSales add;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
 
         driver=new ChromeDriver();
 
         //credentials for login
-        email="kumpulan6";
-        password="t3r3n66anu";
+        String email = "kumpulan6";
+        String password = "t3r3n66anu";
 
         //set the Driver for addNewSales class with ChromeDriver
         setDRIVER(driver);
         //set the TARGET as the url of website we are going to visit
         setTARGET_URL_HOME(TARGET_HOME_INDEX);
 
-        //defind addNewSales object to call methods
+        //create an object of addNewSales class
         add=new addNewSales();
         //login using email and password
-        add.login(email,password);
+        add.login(email, password);
 
         //Customer constructor
         //add a new Customer object here
 
     }
 
-    @AfterEach
-    void tearDown() {
+    @AfterAll
+    static void tearDown() {
 
         add=null;
 
@@ -62,6 +61,6 @@ class addNewSalesTest {
     @Test
     void newSales() {
 
-
+        //TODO Complete the test script for "Add new sale"
     }
 }
