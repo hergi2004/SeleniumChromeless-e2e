@@ -2,9 +2,12 @@ package com.seleniumtesting.dobiDemo.SalesManage;
 
 import com.seleniumtesting.dobiDemo.CustomerManage.Customer;
 import com.seleniumtesting.dobiDemo.Enum.SELECT_CUST;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import java.math.BigDecimal;
 
 import static com.seleniumtesting.dobiDemo.basicOperration.sleep.sleep;
 
@@ -17,6 +20,11 @@ public class addNewSales {
 
     //can be used together with String TARGET_URL_HOME by concatenation of both String that will form a URL that direct to page creating new Sale
     private static String newSales="?page=new_sale";
+
+    //30 percent of discount
+    private final BigDecimal DISCOUNT_RATE=new BigDecimal("0.3");
+
+    //private static DecimalFormat df2 = new DecimalFormat("#.##");
 
 
     //all methods in this class can use the same DRIVER instance
@@ -74,9 +82,8 @@ public class addNewSales {
      * @param customer Customer object that is constructed with Name,Phone Number, Description and Starting balance ( used when the CUST_NEW_EXISTED enum is creating new customer)
      * @param service_string_array Items of the Sale
      * @param description description for the Service selected
-     * @param discount Discount applied to the Sale
      * @param PAYMENT_M Payment Method of the Sale, "cash" or "bank" (actual values of the input field)
-     * @param PAYMENT Payment ( Full, partial upon Customer sending their items or payment on pickup of items
+     *
      *
      * @return Status Code so the the Unit Testing of this method can be evaluated
      */
@@ -84,9 +91,8 @@ public class addNewSales {
                            Customer customer,
                            String[] service_string_array,
                            String description,
-                           String discount,
-                           String PAYMENT_M,
-                           String PAYMENT){
+                           String PAYMENT_M
+                           ){
         //declaration without initialization
         String quantity;
 
@@ -114,6 +120,7 @@ public class addNewSales {
 
             //same case for the quantity
             // another option is that the quantity is updated using Math.random in range of 6
+            //6 is chosen , not too large or not too small
             quantity = String.valueOf(Math.random() * 6);
             DRIVER.findElement(By.id("itemSelect_quantity")).sendKeys(quantity);
 
@@ -128,17 +135,41 @@ public class addNewSales {
         String totalAmount=DRIVER.findElement(By.xpath("/html/body/div/div[1]/section/div/div[2]/div[1]/div/div[2]/table/tbody/tr[4]/input")).getText();
         System.out.println("Total amount is : " + totalAmount );
 
-        //ensure that the totalAmount is in correct format and special characters other from numbers are escaped
-        //TODO 1. escape String for conversion to BigDecimal
+        //convert the totalAmount to BigDecimal for arithmetic operation and keep the precision
+        BigDecimal totalAmount_BD=new BigDecimal(totalAmount);
 
-        //TODO 2. prevent the discount is greater that @variable totalAmount
-        //BigDecimal totalAmount_BDouble= new BigDecimal(totalAmount);
+        //get the amount of discount based on the DISCOUNT_RATE constant
+        BigDecimal amountOfDiscount= totalAmount_BD.multiply(DISCOUNT_RATE);
 
+        //if the totalAmount is "100.00"
+        /*
+         * convert the String to BigDecimal of new BigDecimal(totalAmount)
+         * BigDecimal multiply()
+         *  totalAmount_BD.multiply(DISCOUNT_RATE)
+         *
+         *  parse the BigDecimal back to String @variable
+         *
+         *
+         */
 
-        DRIVER.findElement(By.id("discount")).sendKeys(discount);
-        DRIVER.findElement(By.id("amountPaid")).sendKeys(PAYMENT);
+        //the payment amount is equal to totalAmount-amount of Discount
+        // this implementation will be
+        // clearing the payment due to 0.00
+        // TODO Add an implementation to have remaining payment due (optional)
+        BigDecimal amountOfPayment_DB = totalAmount_BD.subtract(amountOfDiscount);
+
+        //parse all the BigDecimal to String so that the sendKeys() later can work
+        String amountOfDiscount_Applied=amountOfDiscount.toString();
+        String paymentToBeMade=amountOfPayment_DB.toString();
+
+        //amount of discount applied to the current sale
+        DRIVER.findElement(By.id("discount")).sendKeys(amountOfDiscount_Applied);
+
+        //amount of payment made by the customer on the particular sale (String)
+        DRIVER.findElement(By.id("amountPaid")).sendKeys(paymentToBeMade);
 
         //change pending
+        //TODO update this meaningless return to something meaningful
         return "S";
     }
 
