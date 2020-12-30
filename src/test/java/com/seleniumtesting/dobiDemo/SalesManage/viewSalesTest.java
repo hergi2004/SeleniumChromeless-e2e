@@ -1,5 +1,6 @@
 package com.seleniumtesting.dobiDemo.SalesManage;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -32,6 +33,17 @@ class viewSalesTest {
         a.login(email,password);
 
 
+    }
+
+    @AfterAll
+    static void tearDown() {
+
+        //graceful shutdown of the WebDriver instance
+        driver.quit();
+        driver=null;
+
+        //garbage collect
+        System.gc();
     }
 
     @Test
