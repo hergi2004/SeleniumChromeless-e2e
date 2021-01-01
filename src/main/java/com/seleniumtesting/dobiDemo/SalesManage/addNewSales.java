@@ -31,6 +31,11 @@ public class addNewSales {
     public static void setDRIVER(WebDriver driver){
         DRIVER=driver;
     }
+
+    public static WebDriver getDRIVER(){
+        return DRIVER;
+    }
+
     public static void setTARGET_URL_HOME(String URL){
         TARGET_URL_HOME=URL;
     }
@@ -87,7 +92,7 @@ public class addNewSales {
      *
      * @return Status Code so the the Unit Testing of this method can be evaluated
      */
-    public String newSales(String CUST_NEW_EXISTED,
+    public boolean newSales(String CUST_NEW_EXISTED,
                            Customer customer,
                            String[] service_string_array,
                            String description,
@@ -104,7 +109,7 @@ public class addNewSales {
         SELECT_CUST select= SELECT_CUST.valueOf(CUST_NEW_EXISTED);
 
         //called the method of matched Enum object
-        select.selectCustomer(DRIVER, customer);
+        String s=select.selectCustomer(DRIVER, customer);
 
         //add items for the sale, after selecting a existing customer or creating a new customer
         DRIVER.findElement(By.id("add_item")).click();
@@ -168,9 +173,12 @@ public class addNewSales {
         //amount of payment made by the customer on the particular sale (String)
         DRIVER.findElement(By.id("amountPaid")).sendKeys(paymentToBeMade);
 
+        //click the "save" button to record the sale
+        DRIVER.findElement(By.id("save")).click();
+
         //change pending
         //TODO update this meaningless return to something meaningful
-        return "S";
+        return true;
     }
 
     public void selectServices(String string_service ){

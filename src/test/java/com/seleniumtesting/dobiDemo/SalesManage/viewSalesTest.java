@@ -3,11 +3,13 @@ package com.seleniumtesting.dobiDemo.SalesManage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.seleniumtesting.dobiDemo.SalesManage.addNewSales.setDRIVER;
 import static com.seleniumtesting.dobiDemo.SalesManage.addNewSales.setTARGET_URL_HOME;
+import static com.seleniumtesting.dobiDemo.basicOperration.sleep.sleep;
 
 class viewSalesTest {
 
@@ -49,8 +51,21 @@ class viewSalesTest {
     @Test
     void viewSales() {
 
-        view.viewSales(driver);
+        view.viewSalesPage(driver);
 
+        driver.get("https://ontime.unisza.edu.my/dobidemo/index.php?page=new_sale");
+
+        driver.findElement(By.id("select_customer")).click();
+
+        String Ahmad="Ahmad";
+
+        String xpath_for_finding_matchingName = "//td/a[contains(text(),'" + Ahmad + "')]" ;
+
+        sleep(2000);
+
+        driver.findElement(By.xpath(xpath_for_finding_matchingName)).click();
+
+        sleep(5000);
 
 
     }
