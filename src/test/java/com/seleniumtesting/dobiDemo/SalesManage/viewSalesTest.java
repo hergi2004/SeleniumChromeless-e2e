@@ -1,8 +1,7 @@
 package com.seleniumtesting.dobiDemo.SalesManage;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import jdk.jfr.Description;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -49,6 +48,8 @@ class viewSalesTest {
     }
 
     @Test
+    @Disabled
+    @Description("Not a test for the functional testing of Dobidemo,therefore excluded from the run.")
     void viewSales() {
 
         view.viewSalesPage(driver);
@@ -69,4 +70,65 @@ class viewSalesTest {
 
 
     }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_Date_DESC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_Date_ASC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_CustomerName_DESC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_CustomerName_ASC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_SaleAmount_DESC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void sortingRecordOfSales_SaleAmount_ASC(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void searchforSale_CustomerName(){
+
+    }
+
+    @Test
+    @DisplayName("")
+    @Description("")
+    void searchforSale_SaleRecordIdentifier(){
+
+    }
+
+
+
+
+
 }
