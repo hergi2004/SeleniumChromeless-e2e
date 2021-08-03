@@ -41,7 +41,7 @@ public class UserSignUpOperationTest {
 // driver.switchTo().frame("desktop");
 // driver.switchTo().defaultContent(); //this returns to the parent frame
         WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 10);
-        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("radius")));
+//         waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("radius")));
 //         WebElement usernameTxt = driver.findElement(By.id("username"));
 //         usernameTxt.sendKeys("tomsmith");
 //         WebElement passwordTxt = driver.findElement(By.id("password"));
