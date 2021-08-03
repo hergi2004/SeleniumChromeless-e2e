@@ -15,10 +15,10 @@ import static org.junit.Assert.assertTrue;
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
 
-//      @Test
-//      public void testIsThisReallyTrue() {
-//         assertTrue(true);
-//     }
+     @Test
+     public void testIsThisReallyTrue() {
+        assertTrue(true);
+    }
 
     private WebDriver driver;
 
