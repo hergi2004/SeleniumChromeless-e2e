@@ -1,5 +1,6 @@
 package com.seleniumtesting.demoblaze;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,8 +9,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
 
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
@@ -32,7 +32,7 @@ public class UserSignUpOperationTest {
     }
     
      @Test (groups = {"group1"} )
-    public void testIsThisReallyTrue() {
+     public void testIsThisReallyTrue() {
         assertTrue(true);
     }
 
