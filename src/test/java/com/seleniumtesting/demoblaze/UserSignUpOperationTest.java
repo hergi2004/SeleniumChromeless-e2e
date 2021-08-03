@@ -31,6 +31,13 @@ public class UserSignUpOperationTest {
     @Test
     public void userLogin() throws InterruptedException
     {
+        //For the tooooo fast we can just wait
+WebDriverWait waitForLoginIsDone = new WebDriverWait(driver, 30);
+waitForLoginIsDone.until(ExpectedConditions.visibilityOfElementLocated(By.id("desktop")));
+
+//For the iframe we can switch the driver to it
+driver.switchTo().frame("desktop");
+driver.switchTo().defaultContent(); //this returns to the parent frame
         WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 10);
         waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("buttonOK")));
 //         WebElement usernameTxt = driver.findElement(By.id("username"));
