@@ -11,7 +11,6 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
 
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
