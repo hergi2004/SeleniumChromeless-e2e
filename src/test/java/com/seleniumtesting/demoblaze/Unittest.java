@@ -1,7 +1,6 @@
 package com.seleniumtesting.demoblaze;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 /**
  * Trivial test class. Demonstrates the syntax of JUnit4.
  * Important: Do NOT inherit this class from TestCase() or JUnit3.x is enforced
