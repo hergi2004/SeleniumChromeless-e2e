@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
