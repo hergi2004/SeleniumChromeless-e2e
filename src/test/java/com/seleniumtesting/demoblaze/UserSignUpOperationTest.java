@@ -49,11 +49,11 @@ public class UserSignUpOperationTest {
 //         Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
     }
 
-//     @AfterAll
-//     public void tearDown(){
-//         if (driver != null) {
-//             driver.quit();
-//         }
-//     }
+    @AfterAll
+    public void tearDown(){
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 
     }
