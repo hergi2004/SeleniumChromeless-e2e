@@ -15,6 +15,11 @@ import org.testng.Assert;
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
 
+     @Test
+     public void testIsThisReallyTrue() {
+        assertTrue(true);
+    }
+
     private WebDriver driver;
 
     @BeforeAll
@@ -32,10 +37,6 @@ public class UserSignUpOperationTest {
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
     
-//      @Test
-//      public void testIsThisReallyTrue() {
-//         assertTrue(true);
-//     }
 
     @Test
     public void userLogin() throws InterruptedException
