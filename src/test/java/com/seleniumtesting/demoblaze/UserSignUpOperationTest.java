@@ -1,6 +1,6 @@
 package com.seleniumtesting.demoblaze;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.*;
+// import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.Test;
-import static org.junit.Assert.assertTrue;
+// import org.testng.annotations.Test;
+// import static org.junit.Assert.assertTrue;
 
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
