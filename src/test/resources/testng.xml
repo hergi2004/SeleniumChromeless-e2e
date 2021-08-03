@@ -3,7 +3,7 @@
 <suite name="Suite" verbose="1" >
   <test name="Test" >
     <classes>
-       <class name="UserSignUpOperationTest" />
+       <class name="UserSignUpOperationTeswt" />
     </classes>
   </test>
 </suite>
