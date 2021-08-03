@@ -31,7 +31,7 @@ public class UserSignUpOperationTest {
     @Test
     public void userLogin() throws InterruptedException
     {
-        WebElement usernameTxt = driver.findElement(By.id("input#username"));
+        WebElement usernameTxt = driver.findElement(By.id("username-field"));
         usernameTxt.sendKeys("tomsmith");
         WebElement passwordTxt = driver.findElement(By.id("password"));
         passwordTxt.sendKeys("SuperSecretPassword!");
