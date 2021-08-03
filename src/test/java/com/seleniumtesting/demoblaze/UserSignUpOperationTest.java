@@ -25,7 +25,8 @@ public class UserSignUpOperationTest {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        driver.navigate().to("https://the-internet.herokuapp.com/login");
+//         driver.navigate().to("https://the-internet.herokuapp.com/login");
+        driver.navigate().to("http://demo.automationtesting.in")
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
@@ -33,33 +34,26 @@ public class UserSignUpOperationTest {
     @Test
     public void userLogin() throws InterruptedException
     {
-        //For the tooooo fast we can just wait
-// WebDriverWait waitForLoginIsDone = new WebDriverWait(driver, 30);
-// waitForLoginIsDone.until(ExpectedConditions.visibilityOfElementLocated(By.id("desktop")));
 
-//For the iframe we can switch the driver to it
-// driver.switchTo().frame("desktop");
-// driver.switchTo().defaultContent(); //this returns to the parent frame
-        WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 30);
-        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
 //         WebElement usernameTxt = driver.findElement(By.id("username"));
 //         usernameTxt.sendKeys("tomsmith");
 //         WebElement passwordTxt = driver.findElement(By.id("password"));
 //         passwordTxt.sendKeys("SuperSecretPassword!");
 //         WebElement submitBtn = driver.findElement(By.className("radius"));
 //         submitBtn.click();
-        driver.findElement(By.id("username")).sendKeys("tomsmith");
-        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.id("radius")).click();
-        System.out.println("Current URL is:" + driver.getCurrentUrl());
-        Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
+        driver.findElement(By.id("email")).sendKeys("email@gmail.com");
+        driver.findElement(By.id("enterimg")).click();
+        Thread.sleep(3000);
+        driver.quit();
+//         System.out.println("Current URL is:" + driver.getCurrentUrl());
+//         Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
     }
 
-    @AfterAll
-    public void tearDown(){
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//     @AfterAll
+//     public void tearDown(){
+//         if (driver != null) {
+//             driver.quit();
+//         }
+//     }
 
     }
