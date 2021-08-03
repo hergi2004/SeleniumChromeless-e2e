@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 // import org.testng.annotations.Test;
-// import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
