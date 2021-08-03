@@ -32,10 +32,10 @@ public class UserSignUpOperationTest {
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
     
-     @Test
-     public void testIsThisReallyTrue() {
-        assertTrue(true);
-    }
+//      @Test
+//      public void testIsThisReallyTrue() {
+//         assertTrue(true);
+//     }
 
     @Test
     public void userLogin() throws InterruptedException
