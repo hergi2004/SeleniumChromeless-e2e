@@ -40,8 +40,8 @@ public class UserSignUpOperationTest {
 //For the iframe we can switch the driver to it
 // driver.switchTo().frame("desktop");
 // driver.switchTo().defaultContent(); //this returns to the parent frame
-        WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 10);
-//         waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("radius")));
+        WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 30);
+        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
 //         WebElement usernameTxt = driver.findElement(By.id("username"));
 //         usernameTxt.sendKeys("tomsmith");
 //         WebElement passwordTxt = driver.findElement(By.id("password"));
