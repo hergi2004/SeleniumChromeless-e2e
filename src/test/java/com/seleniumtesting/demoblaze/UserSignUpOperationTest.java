@@ -12,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import static org.junit.Assert.assertTrue;
 
-@TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
+// @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
 
     private WebDriver driver;
