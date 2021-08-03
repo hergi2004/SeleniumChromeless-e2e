@@ -26,7 +26,7 @@ public class UserSignUpOperationTest {
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
 //         driver.navigate().to("https://the-internet.herokuapp.com/login");
-        driver.navigate().to("http://demo.automationtesting.in")
+        driver.navigate().to("http://demo.automationtesting.in");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
