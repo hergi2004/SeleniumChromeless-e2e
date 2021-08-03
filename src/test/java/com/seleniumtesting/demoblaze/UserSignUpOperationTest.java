@@ -30,8 +30,14 @@ public class UserSignUpOperationTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
+    
+     @Test (groups = {"group1"} )
+    public void testIsThisReallyTrue() {
+        assertTrue(true);
+    }
+}
 
-    @Test
+    @Test (groups = {"group2"} )
     public void userLogin() throws InterruptedException
     {
 
