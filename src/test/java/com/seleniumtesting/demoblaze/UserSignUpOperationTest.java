@@ -42,7 +42,7 @@ public class UserSignUpOperationTest {
 //         WebElement submitBtn = driver.findElement(By.className("radius"));
 //         submitBtn.click();
         driver.findElement(By.id("email")).sendKeys("email@gmail.com");
-        driver.findElement(By.id("enterimg")).click();
+        driver.findElement(By.id("entering")).click();
         Thread.sleep(3000);
         driver.quit();
 //         System.out.println("Current URL is:" + driver.getCurrentUrl());
