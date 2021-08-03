@@ -12,7 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import static org.junit.Assert.assertTrue;
 
-// @TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(value= TestInstance.Lifecycle.PER_CLASS)
 public class UserSignUpOperationTest {
 
     private WebDriver driver;
@@ -32,12 +32,12 @@ public class UserSignUpOperationTest {
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
     }
     
-     @Test (groups = {"group1"} )
+     @Test
      public void testIsThisReallyTrue() {
         assertTrue(true);
     }
 
-    @Test (groups = {"group2"} )
+    @Test
     public void userLogin() throws InterruptedException
     {
 
