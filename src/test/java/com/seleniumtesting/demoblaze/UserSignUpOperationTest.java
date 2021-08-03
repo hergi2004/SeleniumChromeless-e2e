@@ -34,14 +34,14 @@ public class UserSignUpOperationTest {
     public void userLogin() throws InterruptedException
     {
         //For the tooooo fast we can just wait
-WebDriverWait waitForLoginIsDone = new WebDriverWait(driver, 30);
-waitForLoginIsDone.until(ExpectedConditions.visibilityOfElementLocated(By.id("desktop")));
+// WebDriverWait waitForLoginIsDone = new WebDriverWait(driver, 30);
+// waitForLoginIsDone.until(ExpectedConditions.visibilityOfElementLocated(By.id("desktop")));
 
 //For the iframe we can switch the driver to it
-driver.switchTo().frame("desktop");
-driver.switchTo().defaultContent(); //this returns to the parent frame
+// driver.switchTo().frame("desktop");
+// driver.switchTo().defaultContent(); //this returns to the parent frame
         WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 10);
-        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("buttonOK")));
+        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("radius")));
 //         WebElement usernameTxt = driver.findElement(By.id("username"));
 //         usernameTxt.sendKeys("tomsmith");
 //         WebElement passwordTxt = driver.findElement(By.id("password"));
@@ -50,7 +50,7 @@ driver.switchTo().defaultContent(); //this returns to the parent frame
 //         submitBtn.click();
         driver.findElement(By.id("username")).sendKeys("tomsmith");
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.id("buttonOK")).click();
+        driver.findElement(By.id("radius")).click();
         System.out.println("Current URL is:" + driver.getCurrentUrl());
         Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
     }
