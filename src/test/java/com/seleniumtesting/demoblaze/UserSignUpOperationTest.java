@@ -31,12 +31,17 @@ public class UserSignUpOperationTest {
     @Test
     public void userLogin() throws InterruptedException
     {
-        WebElement usernameTxt = driver.findElement(By.id("username"));
-        usernameTxt.sendKeys("tomsmith");
-        WebElement passwordTxt = driver.findElement(By.id("password"));
-        passwordTxt.sendKeys("SuperSecretPassword!");
-        WebElement submitBtn = driver.findElement(By.className("radius"));
-        submitBtn.click();
+        WebDriverWait waitForLoginScreenToLoad = new WebDriverWait(driver, 10);
+        waitForLoginScreenToLoad.until(ExpectedConditions.visibilityOfElementLocated(By.id("buttonOK")));
+//         WebElement usernameTxt = driver.findElement(By.id("username"));
+//         usernameTxt.sendKeys("tomsmith");
+//         WebElement passwordTxt = driver.findElement(By.id("password"));
+//         passwordTxt.sendKeys("SuperSecretPassword!");
+//         WebElement submitBtn = driver.findElement(By.className("radius"));
+//         submitBtn.click();
+        driver.findElement(By.id("username")).sendKeys("tomsmith");
+        driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");
+        driver.findElement(By.id("buttonOK")).click();
         System.out.println("Current URL is:" + driver.getCurrentUrl());
         Assert.assertTrue(driver.getCurrentUrl().contains("secure"));
     }
