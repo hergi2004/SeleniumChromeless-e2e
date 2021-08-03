@@ -35,7 +35,6 @@ public class UserSignUpOperationTest {
     public void testIsThisReallyTrue() {
         assertTrue(true);
     }
-}
 
     @Test (groups = {"group2"} )
     public void userLogin() throws InterruptedException
